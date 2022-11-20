@@ -1,7 +1,23 @@
 import styled from 'styled-components'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <div>HOME!</div>
+  },
+  {
+    path: '/about',
+    element: <div>ABOUT PAGE!</div>
+  }
+])
 
 function App() {
-  return <Container></Container>
+  return (
+    <Container>
+      <RouterProvider router={router} />
+    </Container>
+  )
 }
 
 const Container = styled.div`
@@ -9,7 +25,6 @@ const Container = styled.div`
   width: 100%;
   min-height: 300vh;
   position: relative;
-  background-color: aquamarine;
   margin: 0 auto;
 `
 
