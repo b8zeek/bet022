@@ -13,6 +13,30 @@ export function Table() {
         <Row>Vidovic</Row>
         <Row>Bojan</Row>
         <Row>Babic</Row>
+        <Row>Mirko</Row>
+        <Row>Basic</Row>
+        <Row>Petar</Row>
+        <Row>Vidovic</Row>
+        <Row>Ljubo</Row>
+        <Row>Vidovic</Row>
+        <Row>Bojan</Row>
+        <Row>Babic</Row>
+        <Row>Mirko</Row>
+        <Row>Basic</Row>
+        <Row>Petar</Row>
+        <Row>Vidovic</Row>
+        <Row>Ljubo</Row>
+        <Row>Vidovic</Row>
+        <Row>Bojan</Row>
+        <Row>Babic</Row>
+        <Row>Mirko</Row>
+        <Row>Basic</Row>
+        <Row>Petar</Row>
+        <Row>Vidovic</Row>
+        <Row>Ljubo</Row>
+        <Row>Vidovic</Row>
+        <Row>Bojan</Row>
+        <Row>Babic</Row>
       </Body>
     </Container>
   )
