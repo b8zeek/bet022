@@ -1,5 +1,7 @@
+@import './assets/styles/alliance-no2.css';
+
 :root {
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-family: AllianceNo2, Inter, Avenir, Helvetica, Arial, sans-serif;
   font-size: 16px;
   font-weight: 400;
 
