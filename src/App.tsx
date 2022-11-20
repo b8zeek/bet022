@@ -1,14 +1,16 @@
 import styled from 'styled-components'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
+import StandingsPage from './pages/StandingsPage'
+
 const router = createBrowserRouter([
   {
     path: '/',
     element: <div>HOME!</div>
   },
   {
-    path: '/about',
-    element: <div>ABOUT PAGE!</div>
+    path: '/standings',
+    element: <StandingsPage />
   }
 ])
 
