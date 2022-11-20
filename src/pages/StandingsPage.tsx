@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 import { Heading, Table } from '../components'
 
-function StandingsPage() {
+export function StandingsPage() {
   return (
     <Container>
       <Heading marginBottom='20px'>Current Standings</Heading>
@@ -12,5 +12,3 @@ function StandingsPage() {
 }
 
 const Container = styled.div``
-
-export default StandingsPage

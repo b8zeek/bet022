@@ -1,12 +1,16 @@
 import styled from 'styled-components'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
-import StandingsPage from './pages/StandingsPage'
+import { LoginPage, StandingsPage } from './pages'
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <div>HOME!</div>
+  },
+  {
+    path: '/login',
+    element: <LoginPage />
   },
   {
     path: '/standings',
