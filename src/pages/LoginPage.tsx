@@ -1,11 +1,13 @@
 import styled from 'styled-components'
 
-import { Heading, Input } from '../components'
+import { Heading, Paragraph, Input } from '../components'
 
 export function LoginPage() {
   return (
     <Container>
-      <Heading>Welcome to Bet022</Heading>
+      <Heading rainbow marginBottom='20px'>
+        Welcome to Bet022
+      </Heading>
       <Form>
         <Input spellCheck={false} />
       </Form>

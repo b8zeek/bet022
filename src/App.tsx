@@ -29,8 +29,9 @@ function App() {
 const Container = styled.div`
   max-width: 500px;
   width: 100%;
-  min-height: 300vh;
+  min-height: 100vh;
   position: relative;
+  padding: 10px;
   margin: 0 auto;
 `
 

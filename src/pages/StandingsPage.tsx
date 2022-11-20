@@ -5,7 +5,9 @@ import { Heading, Table } from '../components'
 export function StandingsPage() {
   return (
     <Container>
-      <Heading marginBottom='20px'>Current Standings</Heading>
+      <Heading rainbow marginBottom='20px'>
+        Current Standings
+      </Heading>
       <Table />
     </Container>
   )
