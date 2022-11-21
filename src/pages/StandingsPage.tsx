@@ -1,10 +1,10 @@
 import { PageLayout } from '../wrappers'
 import { Table, Paragraph } from '../components'
 
-import { useParticipants } from '../hooks'
+import { useStandings } from '../hooks'
 
 export function StandingsPage() {
-  const { data: participants, isLoading, isError } = useParticipants()
+  const { data: participants, isLoading, isError } = useStandings()
 
   return (
     <PageLayout heading='Current Standings' subheading='You have to try much harder buddy!'>

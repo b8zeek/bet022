@@ -1,1 +1,2 @@
-export * from './useParticipants'
+export * from './useStandings'
+export * from './useGames'
