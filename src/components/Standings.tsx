@@ -2,6 +2,8 @@ import styled, { keyframes } from 'styled-components'
 
 import { Participant } from '../models'
 
+import { Text } from '../components'
+
 type ItemProps = {
   participant: Participant
 }
@@ -74,22 +76,6 @@ const Row = styled.div`
   &:last-child {
     border-radius: 0 0 6px 6px;
   }
-`
-
-type TextProps = {
-  widthPercentage: number
-  textAlign?: string
-}
-
-const Text = styled.p<TextProps>`
-  ${({ widthPercentage }) => `width: ${widthPercentage}%;`}
-  display: inline-block;
-  vertical-align: top;
-  line-height: 1.5;
-  font-size: 14px;
-  color: #c9d1d9;
-
-  ${({ textAlign }) => textAlign && `text-align: ${textAlign};`}
 `
 
 const placeHolderShimmer = keyframes`
