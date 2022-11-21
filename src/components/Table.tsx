@@ -16,50 +16,11 @@ function Item({ participant }: ItemProps) {
   )
 }
 
-const participants = [
-  {
-    name: 'Goran Panjkov',
-    score: 45
-  },
-  {
-    name: 'Petar Vidovic',
-    score: 44
-  },
-  {
-    name: 'Mirko Basic',
-    score: 32
-  },
-  {
-    name: 'Milos Micic',
-    score: 27
-  },
-  {
-    name: 'Zoran Vlaisavljevic',
-    score: 24
-  },
-  {
-    name: 'Marko Iskic',
-    score: 23
-  },
-  {
-    name: 'Dusan Maukovic',
-    score: 12
-  },
-  {
-    name: 'Bojan Babic',
-    score: 12
-  },
-  {
-    name: 'Ljubo Vidovic',
-    score: 12
-  },
-  {
-    name: 'Kemal El Shairy',
-    score: 0
-  }
-]
+type TableProps = {
+  participants: Participant[]
+}
 
-export function Table() {
+export function Table({ participants }: TableProps) {
   return (
     <Container>
       <Header>Current Standings</Header>
