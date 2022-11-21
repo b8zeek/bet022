@@ -1,4 +1,5 @@
 export * from './Heading'
+export * from './Subheading'
 export * from './Table'
 export * from './Paragraph'
 export * from './Input'

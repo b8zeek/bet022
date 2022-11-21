@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 type HeadingProps = {
   rainbow?: boolean
+  textCenter?: boolean
   marginBottom?: string
 }
 
@@ -27,5 +28,7 @@ export const Heading = styled.h1<HeadingProps>`
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
   `}
+
+  ${({ textCenter }) => textCenter && 'text-align: center;'}
   ${({ marginBottom }) => marginBottom && `margin-bottom: ${marginBottom};`}
 `

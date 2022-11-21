@@ -6,7 +6,7 @@ export function Logo() {
 
 const StyledParagraph = styled.p`
   line-height: 40px;
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 900;
   background-image: linear-gradient(180deg, #ffb6ff, #b344ff);
   background-clip: text;
