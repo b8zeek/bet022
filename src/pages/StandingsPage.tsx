@@ -1,5 +1,3 @@
-import styled from 'styled-components'
-
 import { PageLayout } from '../wrappers'
 import { Table, Paragraph } from '../components'
 
@@ -18,5 +16,3 @@ export function StandingsPage() {
     </PageLayout>
   )
 }
-
-const Container = styled.div``

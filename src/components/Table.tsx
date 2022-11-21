@@ -11,7 +11,11 @@ function Item({ participant }: ItemProps) {
 
   return (
     <Row>
-      {name} - {score}
+      <Text widthPercentage={50}>{name}</Text>
+      <Text widthPercentage={30}>Something</Text>
+      <Text widthPercentage={20} textAlign='right'>
+        {score}
+      </Text>
     </Row>
   )
 }
@@ -57,4 +61,20 @@ const Row = styled.div`
   &:last-child {
     border-radius: 0 0 6px 6px;
   }
+`
+
+type TextProps = {
+  widthPercentage: number
+  textAlign?: string
+}
+
+const Text = styled.p<TextProps>`
+  ${({ widthPercentage }) => `width: ${widthPercentage}%;`}
+  display: inline-block;
+  vertical-align: top;
+  line-height: 1.5;
+  font-size: 14px;
+  color: #c9d1d9;
+
+  ${({ textAlign }) => textAlign && `text-align: ${textAlign};`}
 `
