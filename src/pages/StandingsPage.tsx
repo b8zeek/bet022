@@ -1,5 +1,5 @@
 import { PageLayout } from '../wrappers'
-import { Table, Paragraph } from '../components'
+import { Standings, Paragraph } from '../components'
 
 import { useStandings } from '../hooks'
 
@@ -11,7 +11,7 @@ export function StandingsPage() {
       {isError ? (
         <Paragraph textCenter>Error while fetching the data.</Paragraph>
       ) : (
-        <Table isLoading={isLoading} participants={participants} />
+        <Standings isLoading={isLoading} participants={participants} />
       )}
     </PageLayout>
   )

@@ -35,7 +35,7 @@ type TableProps = {
   participants: Participant[]
 }
 
-export function Table({ isLoading, participants }: TableProps) {
+export function Standings({ isLoading, participants }: TableProps) {
   return (
     <Container>
       <Header>Current Standings</Header>

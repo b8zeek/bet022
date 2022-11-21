@@ -2,6 +2,10 @@ import styled from 'styled-components'
 
 import { PageLayout } from '../wrappers'
 
+import { Paragraph, Games } from '../components'
+
+import { useGames } from '../hooks'
+
 import { Game } from '../models'
 
 type BettingProps = {
@@ -9,15 +13,10 @@ type BettingProps = {
 }
 
 export function BettingPage() {
+  const { data: games, isLoading, isError } = useGames()
   return (
     <PageLayout heading='Your Predictions' subheading='Hmmm... Are you sure about that?'>
-      <Form>
-        <GameContainer>Game 1</GameContainer>
-      </Form>
+      {isError ? <Paragraph textCenter>Error while fetching the data.</Paragraph> : <Games />}
     </PageLayout>
   )
 }
-
-const Form = styled.form``
-
-const GameContainer = styled.div``
