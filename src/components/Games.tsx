@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 import { Game } from '../models'
 
-import { Text } from '../components'
+import { Text, Paragraph } from '../components'
 
 function GameItem({ game }: { game: Game }) {
   return (
@@ -11,6 +11,12 @@ function GameItem({ game }: { game: Game }) {
         <Text widthPercentage={30}>{game.homeTeam}</Text>
         <Text widthPercentage={30}>{game.awayTeam}</Text>
       </GameData>
+      <Select>
+        <option hidden disabled selected></option>
+        <option value='1'>1</option>
+        <option value='X'>X</option>
+        <option value='2'>2</option>
+      </Select>
     </GameContainer>
   )
 }
@@ -21,11 +27,14 @@ type GamesProps = {
 }
 
 export function Games({ games, isLoading }: GamesProps) {
+  console.log(games)
   return (
     <Form>
-      {games.map(game => (
-        <GameItem key={game.id} game={game} />
-      ))}
+      {isLoading ? (
+        <Paragraph>Loading the data...</Paragraph>
+      ) : (
+        games.map(game => <GameItem key={game.id} game={game} />)
+      )}
     </Form>
   )
 }
@@ -38,8 +47,21 @@ const GameContainer = styled.div`
 
 const GameData = styled.div`
   width: 80%;
+  display: inline-block;
+  vertical-align: top;
   padding: 5px 12px;
   border-radius: 6px 0 0 6px;
   border: 1px solid #30363d;
   border-right: none;
+`
+
+const Select = styled.select`
+  width: 20%;
+  height: 33px;
+  line-height: 33px;
+  border-radius: 0 6px 6px 0;
+  border: 1px solid #30363d;
+  background-color: #21262d;
+  text-align: center;
+  outline: none;
 `
