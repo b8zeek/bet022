@@ -19,7 +19,7 @@ const StyledButton = styled.button`
   height: 32px;
   line-height: 20px;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 600;
   color: #c9d1d9;
   background-color: #21262d;
   border: 1px solid rgba(240, 246, 252, 0.1);
