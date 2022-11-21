@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
+import { FOOTER_HEIGHT } from '../constants'
+
 export function Footer() {
   return (
     <Container>
@@ -11,11 +13,12 @@ export function Footer() {
 }
 
 const Container = styled.footer`
+  height: ${FOOTER_HEIGHT};
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 0 10px 100px;
+  padding: 0 10px;
 `
 
 const CopyrightText = styled.p`

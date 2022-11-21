@@ -4,6 +4,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { LoginPage, StandingsPage } from './pages'
 import { Navigation, Footer } from './components'
 
+import { MAX_WIDTH, FOOTER_HEIGHT } from './constants'
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -30,11 +32,11 @@ function App() {
 }
 
 const Container = styled.div`
-  max-width: 500px;
+  max-width: ${MAX_WIDTH};
   width: 100%;
   min-height: 100vh;
   position: relative;
-  padding: 20px 10px 240px;
+  padding: 0 10px ${FOOTER_HEIGHT};
   margin: 0 auto;
 `
 
