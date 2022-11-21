@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 import { Game } from '../models'
 
-import { Text, Paragraph } from '../components'
+import { Text, Paragraph, Button } from '../components'
 
 function GameItem({ game }: { game: Game }) {
   return (
@@ -35,14 +35,21 @@ export function Games({ games, isLoading }: GamesProps) {
       ) : (
         games.map(game => <GameItem key={game.id} game={game} />)
       )}
+      <Button onClick={event => event.preventDefault()}>Submit</Button>
     </Form>
   )
 }
 
-const Form = styled.form``
+const Form = styled.form`
+  text-align: center;
+`
 
 const GameContainer = styled.div`
   margin-bottom: 10px;
+
+  &:last-of-type {
+    margin-bottom: 30px;
+  }
 `
 
 const GameData = styled.div`
