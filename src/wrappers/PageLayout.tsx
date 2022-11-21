@@ -25,5 +25,5 @@ export function PageLayout({ heading, subheading, children }: PageLayoutProps) {
 
 const Container = styled.div`
   min-height: calc(100vh - ${FOOTER_HEIGHT});
-  padding: 20px 10px 100px;
+  padding: 84px 10px 10px;
 `

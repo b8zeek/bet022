@@ -8,10 +8,11 @@ export function StandingsPage() {
 
   return (
     <PageLayout heading='Current Standings' subheading='You have to try much harder buddy!'>
-      {(() => {
-        if (isError) return <Paragraph textCenter>Error while fetching the data.</Paragraph>
-        return <Table isLoading={isLoading} participants={participants} />
-      })()}
+      {isError ? (
+        <Paragraph textCenter>Error while fetching the data.</Paragraph>
+      ) : (
+        <Table isLoading={isLoading} participants={participants} />
+      )}
     </PageLayout>
   )
 }
