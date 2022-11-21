@@ -27,14 +27,14 @@ type GamesProps = {
 }
 
 export function Games({ games, isLoading }: GamesProps) {
-  console.log(games)
+  if (isLoading) return <Paragraph textCenter>Loading the data...</Paragraph>
+  if (games.length === 0) return <Paragraph textCenter>No data.</Paragraph>
+
   return (
     <Form>
-      {isLoading ? (
-        <Paragraph>Loading the data...</Paragraph>
-      ) : (
-        games.map(game => <GameItem key={game.id} game={game} />)
-      )}
+      {games.map(game => (
+        <GameItem key={game.id} game={game} />
+      ))}
       <Button onClick={event => event.preventDefault()}>Submit</Button>
     </Form>
   )
