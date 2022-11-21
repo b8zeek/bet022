@@ -1,13 +1,14 @@
 import styled from 'styled-components'
 
-import { Heading, Paragraph, Input } from '../components'
+import { Heading, Subheading, Input } from '../components'
 
 export function LoginPage() {
   return (
     <Container>
-      <Heading rainbow marginBottom='20px'>
-        Welcome to Bet022
+      <Heading rainbow textCenter>
+        Welcome Traveler
       </Heading>
+      <Subheading marginBottom='20px'>Thank you for your money poor lost soul</Subheading>
       <Form>
         <Input spellCheck={false} />
       </Form>
@@ -16,7 +17,7 @@ export function LoginPage() {
 }
 
 const Container = styled.div`
-  min-height: 100vh;
+  min-height: calc(100vh - 260px);
   display: flex;
   flex-direction: column;
   justify-content: center;
