@@ -25,9 +25,5 @@ export function PageLayout({ heading, subheading, children }: PageLayoutProps) {
 
 const Container = styled.div`
   min-height: calc(100vh - ${FOOTER_HEIGHT});
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   padding: 20px 10px 100px;
 `
