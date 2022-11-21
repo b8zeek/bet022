@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 import styled from 'styled-components'
 
-import { Heading, Subheading } from '../components'
+import { Heading, Subheading, Navigation } from '../components'
 
 import { FOOTER_HEIGHT } from '../constants'
 
@@ -14,6 +14,7 @@ type PageLayoutProps = {
 export function PageLayout({ heading, subheading, children }: PageLayoutProps) {
   return (
     <Container>
+      <Navigation />
       <Heading rainbow textCenter>
         {heading}
       </Heading>

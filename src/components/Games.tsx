@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import moment from 'moment'
 
 import { Game } from '../models'
 
@@ -8,8 +9,13 @@ function GameItem({ game }: { game: Game }) {
   return (
     <GameContainer>
       <GameData>
-        <Text widthPercentage={30}>{game.homeTeam}</Text>
-        <Text widthPercentage={30}>{game.awayTeam}</Text>
+        <Text widthPercentage={30} italic>
+          {moment.unix(game.time).format('DD.MM. HHmm')}
+        </Text>
+        <Text widthPercentage={35} textAlign='right'>
+          {game.homeTeam}
+        </Text>
+        <Text widthPercentage={35}>{game.awayTeam}</Text>
       </GameData>
       <Select>
         <option hidden disabled selected></option>
@@ -60,6 +66,7 @@ const GameData = styled.div`
   border-radius: 6px 0 0 6px;
   border: 1px solid #30363d;
   border-right: none;
+  text-align: left;
 `
 
 const Select = styled.select`

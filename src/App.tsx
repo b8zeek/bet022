@@ -2,26 +2,22 @@ import styled from 'styled-components'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 import { LoginPage, StandingsPage, BettingPage } from './pages'
-import { Navigation, Footer } from './components'
+import { Footer } from './components'
 
 import { MAX_WIDTH, FOOTER_HEIGHT } from './constants'
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <div>HOME!</div>
-  },
-  {
-    path: '/login',
-    element: <LoginPage />
-  },
-  {
-    path: '/standings',
     element: <StandingsPage />
   },
   {
     path: '/predictions',
     element: <BettingPage />
+  },
+  {
+    path: '/login',
+    element: <LoginPage />
   }
 ])
 
@@ -30,7 +26,6 @@ function App() {
     <Container>
       <RouterProvider router={router} />
       <Footer />
-      <Navigation />
     </Container>
   )
 }
