@@ -2,6 +2,8 @@ import styled from 'styled-components'
 
 import { Heading, Subheading, Input } from '../components'
 
+import { FOOTER_HEIGHT } from '../constants'
+
 export function LoginPage() {
   return (
     <Container>
@@ -17,11 +19,12 @@ export function LoginPage() {
 }
 
 const Container = styled.div`
-  min-height: calc(100vh - 260px);
+  min-height: calc(100vh - ${FOOTER_HEIGHT});
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 20px 10px 0;
 `
 
 const Form = styled.form`
