@@ -1,15 +1,13 @@
 import styled from 'styled-components'
 
-import { Heading, Table } from '../components'
+import { PageLayout } from '../wrappers'
+import { Table } from '../components'
 
 export function StandingsPage() {
   return (
-    <Container>
-      <Heading rainbow marginBottom='40px'>
-        Current Standings
-      </Heading>
+    <PageLayout heading='Current Standings' subheading='You have to try much harder buddy!'>
       <Table />
-    </Container>
+    </PageLayout>
   )
 }
 

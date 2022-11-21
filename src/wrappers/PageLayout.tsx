@@ -17,7 +17,7 @@ export function PageLayout({ heading, subheading, children }: PageLayoutProps) {
       <Heading rainbow textCenter>
         {heading}
       </Heading>
-      <Subheading marginBottom='20px'>{subheading}</Subheading>
+      <Subheading marginBottom='40px'>{subheading}</Subheading>
       {children}
     </Container>
   )
@@ -29,5 +29,5 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 20px 10px 0;
+  padding: 20px 10px 100px;
 `
