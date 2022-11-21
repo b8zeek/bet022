@@ -10,8 +10,7 @@ export function StandingsPage() {
     <PageLayout heading='Current Standings' subheading='You have to try much harder buddy!'>
       {(() => {
         if (isError) return <Paragraph textCenter>Error while fetching the data.</Paragraph>
-        if (isLoading) return <Paragraph textCenter>Fetching the data...</Paragraph>
-        return <Table participants={participants} />
+        return <Table isLoading={isLoading} participants={participants} />
       })()}
     </PageLayout>
   )

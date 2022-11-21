@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 
 import { Participant } from '../models'
 
@@ -20,18 +20,31 @@ function Item({ participant }: ItemProps) {
   )
 }
 
+function PreloaderItem() {
+  return (
+    <Row>
+      <PreloaderText widthPercentage={30} marginRight={20} />
+      <PreloaderText widthPercentage={20} marginRight={25} />
+      <PreloaderText widthPercentage={5} />
+    </Row>
+  )
+}
+
 type TableProps = {
+  isLoading: boolean
   participants: Participant[]
 }
 
-export function Table({ participants }: TableProps) {
+export function Table({ isLoading, participants }: TableProps) {
   return (
     <Container>
       <Header>Current Standings</Header>
       <Body>
-        {participants.map(participant => (
-          <Item key={participant.name} participant={participant} />
-        ))}
+        {isLoading
+          ? Array(10)
+              .fill('🍀')
+              .map((_, index) => <PreloaderItem key={index} />)
+          : participants.map(participant => <Item key={participant.name} participant={participant} />)}
       </Body>
     </Container>
   )
@@ -77,4 +90,31 @@ const Text = styled.p<TextProps>`
   color: #c9d1d9;
 
   ${({ textAlign }) => textAlign && `text-align: ${textAlign};`}
+`
+
+const placeHolderShimmer = keyframes`
+  0%{
+      background-position: -200px 0
+  }
+  100%{
+      background-position: 0 0
+  }
+`
+
+type PreloaderTextProps = {
+  widthPercentage: number
+  marginRight?: number
+}
+
+const PreloaderText = styled.div<PreloaderTextProps>`
+  ${({ widthPercentage }) => `width: ${widthPercentage}%;`}
+  height: 14px;
+  display: inline-block;
+  background: linear-gradient(90deg, rgba(100, 100, 100, 0.5), rgba(50, 50, 50, 0.1));
+  background-size: 400px 100px;
+  border-radius: 4px;
+  margin: 4px 0 3px;
+  animation: ${placeHolderShimmer} 1s linear alternate infinite;
+
+  ${({ marginRight }) => marginRight && `margin-right: ${marginRight}%;`}
 `
