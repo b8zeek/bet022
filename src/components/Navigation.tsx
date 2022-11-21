@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 import { Logo } from './Logo'
 
@@ -7,9 +8,8 @@ export function Navigation() {
     <Container>
       <Content>
         <Nav>
-          <NavButton>Home</NavButton>
-          <NavButton>Bet</NavButton>
-          <NavButton>Tips</NavButton>
+          <NavButton to='/'>Home</NavButton>
+          <NavButton to='predictions'>Bet</NavButton>
         </Nav>
         <Logo />
       </Content>
@@ -44,7 +44,7 @@ const Nav = styled.div`
   align-items: center;
 `
 
-const NavButton = styled.a`
+const NavButton = styled(Link)`
   height: 36px;
   line-height: 36px;
   display: inline-block;
