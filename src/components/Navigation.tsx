@@ -6,6 +6,11 @@ export function Navigation() {
   return (
     <Container>
       <Content>
+        <Nav>
+          <NavButton>🏠</NavButton>
+          <NavButton>🎰</NavButton>
+          <NavButton>🗒️</NavButton>
+        </Nav>
         <Logo />
       </Content>
     </Container>
@@ -28,7 +33,26 @@ const Content = styled.div`
   width: 100%;
   height: 64px;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   padding: 12px 10px;
   margin: 0 auto;
+`
+
+const Nav = styled.div`
+  height: 40px;
+  display: flex;
+  align-items: center;
+`
+
+const NavButton = styled.a`
+  height: 40px;
+  line-height: 28px;
+  display: inline-block;
+  vertical-align: top;
+  font-size: 28px;
+  margin-right: 24px;
+  border-radius: 6px;
+  padding: 6px 8px;
+  background-color: #ffffff17;
+  cursor: pointer;
 `
