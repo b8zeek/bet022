@@ -7,9 +7,9 @@ export function Navigation() {
     <Container>
       <Content>
         <Nav>
-          <NavButton>🏠</NavButton>
-          <NavButton>🎰</NavButton>
-          <NavButton>🗒️</NavButton>
+          <NavButton>Home</NavButton>
+          <NavButton>Bet</NavButton>
+          <NavButton>Tips</NavButton>
         </Nav>
         <Logo />
       </Content>
@@ -20,11 +20,11 @@ export function Navigation() {
 const Container = styled.div`
   height: 64px;
   position: fixed;
-  bottom: 0;
+  top: 0;
   left: 0;
   right: 0;
   background-color: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(10px);
   margin: 0;
 `
 
@@ -45,14 +45,15 @@ const Nav = styled.div`
 `
 
 const NavButton = styled.a`
-  height: 40px;
-  line-height: 28px;
+  height: 36px;
+  line-height: 36px;
   display: inline-block;
-  vertical-align: top;
-  font-size: 28px;
-  margin-right: 24px;
+  vertical-align: middle;
+  font-size: 16px;
+  font-weight: 800;
+  margin-right: 12px;
   border-radius: 6px;
-  padding: 6px 8px;
-  background-color: #ffffff17;
+  padding: 0 12px;
+  background-color: #00000099;
   cursor: pointer;
 `
