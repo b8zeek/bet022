@@ -1,43 +1,73 @@
 {
   "participants": [
     {
+      "id": "1",
+      "position": "1",
       "name": "Goran Panjkov",
+      "nationality": "BR",
       "score": 45
     },
     {
+      "id": "2",
+      "position": "2",
       "name": "Petar Vidovic",
+      "nationality": "BR",
       "score": 44
     },
     {
+      "id": "3",
+      "position": "3",
       "name": "Mirko Basic",
+      "nationality": "BR",
       "score": 32
     },
     {
+      "id": "4",
+      "position": "4",
       "name": "Milos Micic",
+      "nationality": "BR",
       "score": 27
     },
     {
+      "id": "5",
+      "position": "5",
       "name": "Zoran Vlaisavljevic",
+      "nationality": "BR",
       "score": 24
     },
     {
+      "id": "6",
+      "position": "6",
       "name": "Marko Iskic",
+      "nationality": "BR",
       "score": 23
     },
     {
+      "id": "7",
+      "position": "7",
       "name": "Dusan Maukovic",
+      "nationality": "BR",
       "score": 12
     },
     {
+      "id": "8",
+      "position": "8",
       "name": "Bojan Babic",
+      "nationality": "BR",
       "score": 12
     },
     {
+      "id": "9",
+      "position": "9",
       "name": "Ljubo Vidovic",
+      "nationality": "BR",
       "score": 12
     },
     {
+      "id": "10",
+      "position": "10",
       "name": "Kemal El Shairy",
+      "nationality": "BR",
       "score": 0
     }
   ]
