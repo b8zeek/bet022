@@ -5,7 +5,11 @@ import './index.css'
 
 import { QueryClient, QueryClientProvider } from 'react-query'
 
-const queryClient = new QueryClient()
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: { refetchOnWindowFocus: false }
+  }
+})
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
