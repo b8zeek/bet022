@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 
 import { LoginPage, StandingsPage, BettingPage } from './pages'
 import { Footer } from './components'

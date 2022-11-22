@@ -12,10 +12,10 @@ function GameItem({ game }: { game: Game }) {
         <Text widthPercentage={30} italic>
           {moment.unix(game.time).format('DD.MM. HHmm')}
         </Text>
-        <Text widthPercentage={35} textAlign='right'>
+        <Text widthPercentage={25} textAlign='right' marginRight='5%'>
           {game.homeTeam}
         </Text>
-        <Text widthPercentage={35}>{game.awayTeam}</Text>
+        <Text widthPercentage={40}>{game.awayTeam}</Text>
       </GameData>
       <Select>
         <option hidden disabled selected></option>
