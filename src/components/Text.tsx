@@ -4,6 +4,7 @@ type TextProps = {
   widthPercentage: number
   italic?: boolean
   textAlign?: string
+  marginRight?: string
 }
 
 export const Text = styled.p<TextProps>`
@@ -16,4 +17,5 @@ export const Text = styled.p<TextProps>`
 
   ${({ italic }) => italic && 'font-style: italic;'}
   ${({ textAlign }) => textAlign && `text-align: ${textAlign};`}
+  ${({ marginRight }) => marginRight && `margin-right: ${marginRight};`}
 `

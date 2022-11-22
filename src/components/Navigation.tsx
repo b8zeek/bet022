@@ -9,7 +9,7 @@ export function Navigation() {
       <Content>
         <Nav>
           <NavButton to='/'>Home</NavButton>
-          <NavButton to='predictions'>Bet</NavButton>
+          <NavButton to='/predictions'>Bet</NavButton>
         </Nav>
         <Logo />
       </Content>
@@ -55,5 +55,6 @@ const NavButton = styled(Link)`
   border-radius: 6px;
   padding: 0 12px;
   background-color: #00000099;
+  text-decoration: none;
   cursor: pointer;
 `
