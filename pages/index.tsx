@@ -8,11 +8,12 @@ export default function StandingsPage() {
 
   return (
     <PageLayout heading='Current Standings' subheading='You have to try much harder!'>
-      {isError ? (
-        <Paragraph textCenter>Error while fetching the data.</Paragraph>
-      ) : (
-        <Standings isLoading={isLoading} participants={participants} />
-      )}
+      {(() => {
+        if (isError) return <Paragraph textCenter>Error while fetching the data.</Paragraph>
+        if (!isLoading && !participants.length) return <Paragraph textCenter>No data.</Paragraph>
+
+        return <Standings isLoading={isLoading} participants={participants} />
+      })()}
     </PageLayout>
   )
 }
