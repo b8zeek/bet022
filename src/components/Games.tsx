@@ -3,7 +3,7 @@ import moment from 'moment'
 
 import { Game } from '../models'
 
-import { Text, Paragraph, Button } from '../components'
+import { Text, PreloaderText, Paragraph, Button } from '../components'
 
 function GameItem({ game }: { game: Game }) {
   return (
@@ -18,7 +18,25 @@ function GameItem({ game }: { game: Game }) {
         <Text widthPercentage={40}>{game.awayTeam}</Text>
       </GameData>
       <Select>
-        <option hidden disabled selected></option>
+        <option hidden></option>
+        <option value='1'>1</option>
+        <option value='X'>X</option>
+        <option value='2'>2</option>
+      </Select>
+    </GameContainer>
+  )
+}
+
+function PreloaderGameItem({ isLoading }: { isLoading: boolean }) {
+  return (
+    <GameContainer>
+      <GameData>
+        <PreloaderText widthPercentage={20} marginRight={15} />
+        <PreloaderText widthPercentage={20} marginRight={5} />
+        <PreloaderText widthPercentage={20} />
+      </GameData>
+      <Select disabled={isLoading}>
+        <option hidden></option>
         <option value='1'>1</option>
         <option value='X'>X</option>
         <option value='2'>2</option>
@@ -33,7 +51,16 @@ type GamesProps = {
 }
 
 export function Games({ games, isLoading }: GamesProps) {
-  if (isLoading) return <Paragraph textCenter>Loading the data...</Paragraph>
+  if (isLoading)
+    return (
+      <>
+        {Array(10)
+          .fill('🍀')
+          .map((_, index) => (
+            <PreloaderGameItem key={index} isLoading={isLoading} />
+          ))}
+      </>
+    )
   if (games.length === 0) return <Paragraph textCenter>No data.</Paragraph>
 
   return (
@@ -51,6 +78,7 @@ const Form = styled.form`
 `
 
 const GameContainer = styled.div`
+  height: 33px;
   margin-bottom: 10px;
 
   &:last-of-type {
@@ -59,6 +87,7 @@ const GameContainer = styled.div`
 `
 
 const GameData = styled.div`
+  height: 33px;
   width: 80%;
   display: inline-block;
   vertical-align: top;

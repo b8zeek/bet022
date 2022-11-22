@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import { RouterProvider, createBrowserRouter, Navigate } from 'react-router-dom'
 
 import { LoginPage, StandingsPage, BettingPage } from './pages'
 import { Footer } from './components'
@@ -18,6 +18,10 @@ const router = createBrowserRouter([
   {
     path: '/login',
     element: <LoginPage />
+  },
+  {
+    path: '*',
+    element: <Navigate to='/' />
   }
 ])
 
