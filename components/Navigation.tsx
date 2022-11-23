@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 
 import { Logo } from './Logo'
 
@@ -8,8 +8,8 @@ export function Navigation() {
     <Container>
       <Content>
         <Nav>
-          <NavButton to='/'>Home</NavButton>
-          <NavButton to='/predictions'>Bet</NavButton>
+          <NavButton href='/'>Home</NavButton>
+          <NavButton href='/predictions'>Bet</NavButton>
         </Nav>
         <Logo />
       </Content>
