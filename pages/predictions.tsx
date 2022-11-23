@@ -9,11 +9,12 @@ export default function BettingPage() {
 
   return (
     <PageLayout heading='Your Predictions' subheading='Take your best shot!'>
-      {isError ? (
-        <Paragraph textCenter>Error while fetching the data.</Paragraph>
-      ) : (
-        <Games games={games} isLoading={isLoading} />
-      )}
+      {(() => {
+        if (isError) return <Paragraph textCenter>Error while fetching the data.</Paragraph>
+        if (!isLoading && !games?.length) return <Paragraph textCenter>No data.</Paragraph>
+
+        return <Games games={games} isLoading={isLoading} />
+      })()}
     </PageLayout>
   )
 }

@@ -51,26 +51,18 @@ type GamesProps = {
 }
 
 export function Games({ games, isLoading }: GamesProps) {
-  if (isLoading)
+  if (isLoading || games.length !== 0)
     return (
-      <>
-        {Array(10)
-          .fill('🍀')
-          .map((_, index) => (
-            <PreloaderGameItem key={index} isLoading={isLoading} />
-          ))}
-      </>
+      <Form>
+        {isLoading
+          ? Array(10)
+              .fill('🍀')
+              .map((_, index) => <PreloaderGameItem key={index} isLoading={isLoading} />)
+          : games.map(game => <GameItem key={game.id} game={game} />)}
+        <Button onClick={event => event.preventDefault()}>Submit</Button>
+      </Form>
     )
-  if (games.length === 0) return <Paragraph textCenter>No data.</Paragraph>
-
-  return (
-    <Form>
-      {games.map(game => (
-        <GameItem key={game.id} game={game} />
-      ))}
-      <Button onClick={event => event.preventDefault()}>Submit</Button>
-    </Form>
-  )
+  return <Paragraph textCenter>No data.</Paragraph>
 }
 
 const Form = styled.form`
