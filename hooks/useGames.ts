@@ -6,7 +6,7 @@ export function useGames() {
     // TODO: REMOVE NEXT LINE LATER
     await new Promise(_ => setTimeout(_, 1000))
 
-    const { data } = await axios.get('http://localhost:3000/api/predictions')
+    const { data } = await axios.get(`${process.env.URL}/predictions`)
 
     return data?.games || []
   }
