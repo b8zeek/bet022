@@ -7,7 +7,7 @@ export function Footer() {
     <Container>
       <CopyrightText>Copyright © 2022 🌾 Šid Caffe ☕, Serbia.</CopyrightText>
       <CopyrightText>All Rights Reserved.</CopyrightText>
-      <CopyrightText>by Bejzik&Remus</CopyrightText>
+      <CopyrightText>by Bejzik</CopyrightText>
     </Container>
   )
 }
