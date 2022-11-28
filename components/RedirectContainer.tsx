@@ -9,10 +9,10 @@ type RegisterContainerProps = {
   redirectPath: string
 }
 
-export function RegisterContainer({ paragraph, redirectLabel, redirectPath }: RegisterContainerProps) {
+export function RedirectContainer({ paragraph, redirectLabel, redirectPath }: RegisterContainerProps) {
   return (
     <Container>
-      <Paragraph textCenter marginRight='20px'>
+      <Paragraph display='inline-block' textCenter marginRight='20px'>
         {paragraph}
       </Paragraph>
       <NavButton href={redirectPath}>{redirectLabel}</NavButton>
