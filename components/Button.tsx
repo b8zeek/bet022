@@ -2,13 +2,14 @@ import { MouseEvent, ReactNode } from 'react'
 import styled from 'styled-components'
 
 type ButtonProps = {
+  type?: 'button' | 'reset' | 'submit'
   children: ReactNode | ReactNode[]
-  onClick: (event: MouseEvent<HTMLButtonElement>) => void
+  onClick?: (event: MouseEvent<HTMLButtonElement>) => void
   disabled?: boolean
 }
 
-export const Button = ({ children, onClick, disabled }: ButtonProps) => (
-  <StyledButton onClick={onClick} disabled={disabled}>
+export const Button = ({ type, children, onClick, disabled }: ButtonProps) => (
+  <StyledButton onClick={onClick} disabled={disabled} type={type}>
     {children}
   </StyledButton>
 )
