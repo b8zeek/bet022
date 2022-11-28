@@ -22,5 +22,5 @@ export function RedirectContainer({ paragraph, redirectLabel, redirectPath }: Re
 
 const Container = styled.div`
   text-align: center;
-  margin-bottom: 100px;
+  margin-bottom: 50px;
 `
