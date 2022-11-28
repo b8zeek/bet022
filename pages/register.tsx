@@ -3,18 +3,22 @@ import { useForm } from 'react-hook-form'
 import { object, string } from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 
+import { useRegister } from '../hooks'
+
 import { PageLayout } from '../wrappers'
 import { Label, Input, RedirectContainer, Button } from '../components'
 
 const schema = object().shape({
-  userName: string().min(6).max(255).required(),
-  firstName: string().min(6).max(255).required(),
-  lastName: string().min(6).max(255).required(),
+  userName: string().min(3).max(32).required(),
+  firstName: string().min(3).max(32).required(),
+  lastName: string().min(3).max(32).required(),
   password: string().min(6).max(255).required(),
   passwordConfirmed: string().min(6).max(255).required()
 })
 
 export default function LoginPage() {
+  const { mutateAsync } = useRegister()
+
   const {
     register,
     handleSubmit,
@@ -24,8 +28,10 @@ export default function LoginPage() {
     resolver: yupResolver(schema)
   })
 
-  const onSubmitHandler = (data: any) => {
-    console.log('DATA', { data })
+  const onSubmitHandler = async (data: any) => {
+    const res = await mutateAsync(data)
+
+    console.log('RES', res)
     reset()
   }
 
