@@ -11,7 +11,7 @@ const schema = object().shape({
   password: string().min(6).max(255).required()
 })
 
-export default function LoginPage() {
+export function LoginPage() {
   const {
     register,
     handleSubmit,

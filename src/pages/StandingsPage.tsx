@@ -3,7 +3,7 @@ import { Standings, Paragraph } from '../components'
 
 import { useStandings } from '../hooks'
 
-export default function StandingsPage() {
+export function StandingsPage() {
   const { data: participants, isLoading, isError } = useStandings()
 
   return (

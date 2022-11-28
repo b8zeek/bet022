@@ -4,7 +4,7 @@ import { Paragraph, Games } from '../components'
 
 import { useGames } from '../hooks'
 
-export default function BettingPage() {
+export function PredictionsPage() {
   const { data: games, isLoading, isError } = useGames()
 
   return (

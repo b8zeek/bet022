@@ -15,7 +15,7 @@ export function RedirectContainer({ paragraph, redirectLabel, redirectPath }: Re
       <Paragraph display='inline-block' textCenter marginRight='20px'>
         {paragraph}
       </Paragraph>
-      <NavButton href={redirectPath}>{redirectLabel}</NavButton>
+      <NavButton to={redirectPath}>{redirectLabel}</NavButton>
     </Container>
   )
 }

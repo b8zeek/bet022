@@ -16,7 +16,7 @@ const schema = object().shape({
   passwordConfirmed: string().min(6).max(255).required()
 })
 
-export default function LoginPage() {
+export function RegisterPage() {
   const { mutateAsync } = useRegister()
 
   const {

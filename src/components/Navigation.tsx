@@ -8,8 +8,8 @@ export function Navigation() {
     <Container>
       <Content>
         <Nav>
-          <NavButton href='/'>Home</NavButton>
-          <NavButton href='/predictions'>Bet</NavButton>
+          <NavButton to='/'>Home</NavButton>
+          <NavButton to='/predictions'>Bet</NavButton>
         </Nav>
         <Logo />
       </Content>
