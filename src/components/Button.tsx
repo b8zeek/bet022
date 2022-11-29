@@ -6,17 +6,20 @@ type ButtonProps = {
   children: ReactNode | ReactNode[]
   onClick?: (event: MouseEvent<HTMLButtonElement>) => void
   disabled?: boolean
+  marginBottom?: string
 }
 
-export const Button = ({ type, children, onClick, disabled }: ButtonProps) => (
-  <StyledButton onClick={onClick} disabled={disabled} type={type}>
+export const Button = ({ type, children, onClick, disabled, marginBottom }: ButtonProps) => (
+  <StyledButton onClick={onClick} disabled={disabled} type={type} marginBottom={marginBottom}>
     {children}
   </StyledButton>
 )
 
-const StyledButton = styled.button`
+const StyledButton = styled.button<{
+  marginBottom?: string
+}>`
   display: inline-block;
-  width: 60%;
+  width: 40%;
   height: 32px;
   line-height: 20px;
   font-size: 14px;
@@ -28,6 +31,8 @@ const StyledButton = styled.button`
   padding: 5px 0;
   cursor: pointer;
   margin: 0 auto;
+
+  ${({ marginBottom }) => marginBottom && `margin-bottom: ${marginBottom};`}
 
   &:hover:enabled {
     background-color: #30363d;
