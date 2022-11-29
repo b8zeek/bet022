@@ -7,6 +7,7 @@ type User = {
   userName: string
   firstName: string
   lastName: string
+  isAdmin?: boolean
 }
 
 export const userAtom = atom<User | undefined>(undefined)
