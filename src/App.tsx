@@ -1,15 +1,24 @@
 import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom'
 
 import { LoginPage, RegisterPage, StandingsPage, PredictionsPage } from './pages'
+import { ProtectedRoute } from './wrappers'
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <StandingsPage />
+    element: (
+      <ProtectedRoute>
+        <StandingsPage />
+      </ProtectedRoute>
+    )
   },
   {
     path: '/predictions',
-    element: <PredictionsPage />
+    element: (
+      <ProtectedRoute>
+        <PredictionsPage />
+      </ProtectedRoute>
+    )
   },
   {
     path: '/login',
