@@ -2,6 +2,12 @@ import styled from 'styled-components'
 import { useForm } from 'react-hook-form'
 import { object, string } from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
+import { useNavigate } from 'react-router-dom'
+
+import { personalAccessTokenAtom, userAtom } from '../store'
+import { useSetAtom } from 'jotai'
+
+import { useLogin } from '../hooks'
 
 import { PageLayout } from '../wrappers'
 import { Label, Input, RedirectContainer, Button } from '../components'
@@ -12,18 +18,42 @@ const schema = object().shape({
 })
 
 export function LoginPage() {
+  const setPersonalAccessToken = useSetAtom(personalAccessTokenAtom)
+  const setUser = useSetAtom(userAtom)
+
+  const navigate = useNavigate()
+
+  const { mutateAsync } = useLogin()
+
   const {
     register,
     handleSubmit,
-    formState: { errors },
-    reset
+    formState: { errors }
   } = useForm({
     resolver: yupResolver(schema)
   })
 
-  const onSubmitHandler = (data: any) => {
-    console.log('DATA', { data })
-    reset()
+  const onSubmitHandler = async (data: any) => {
+    try {
+      const {
+        data: { data: resData },
+        headers
+      } = await mutateAsync(data)
+
+      if (headers['auth-token']) setPersonalAccessToken(headers['auth-token'])
+
+      const { userName, firstName, lastName } = resData
+
+      setUser({
+        userName,
+        firstName,
+        lastName
+      })
+
+      if (resData) navigate('/')
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
