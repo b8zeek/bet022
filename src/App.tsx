@@ -1,7 +1,15 @@
+import { useEffect } from 'react'
 import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom'
+import styled from 'styled-components'
+
+import { useAtomValue, useSetAtom } from 'jotai'
+import { showSpinnerAtom, userAtom } from './store'
+
+import { useUser } from './hooks'
 
 import { LoginPage, RegisterPage, StandingsPage, PredictionsPage } from './pages'
 import { ProtectedRoute } from './wrappers'
+import { Spinner } from './components'
 
 const router = createBrowserRouter([
   {
@@ -35,7 +43,35 @@ const router = createBrowserRouter([
 ])
 
 function App() {
-  return <RouterProvider router={router} />
+  const showSpinnerValue = useAtomValue(showSpinnerAtom)
+  const setUser = useSetAtom(userAtom)
+
+  const { refetch, isFetching } = useUser()
+
+  useEffect(() => {
+    const fetchLoggedInUser = async () => {
+      try {
+        const { data } = await refetch()
+
+        if (data) setUser(data)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
+    if (localStorage.getItem('auth-token')) {
+      fetchLoggedInUser()
+    }
+  }, [])
+
+  return (
+    <Container>
+      {(isFetching || showSpinnerValue) && <Spinner />}
+      {!isFetching && <RouterProvider router={router} />}
+    </Container>
+  )
 }
+
+const Container = styled.div``
 
 export default App
