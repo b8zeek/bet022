@@ -9,6 +9,8 @@ import { useSetAtom } from 'jotai'
 
 import { useLogin } from '../hooks'
 
+import { useUserInterface } from '../services'
+
 import { PageLayout } from '../wrappers'
 import { Label, Input, RedirectContainer, Button } from '../components'
 
@@ -33,7 +35,10 @@ export function LoginPage() {
     resolver: yupResolver(schema)
   })
 
+  const { showSpinner, hideSpinner } = useUserInterface()
+
   const onSubmitHandler = async (data: any) => {
+    showSpinner()
     try {
       const {
         data: { data: resData },
@@ -54,6 +59,8 @@ export function LoginPage() {
     } catch (error) {
       console.log(error)
     }
+
+    hideSpinner()
   }
 
   return (
