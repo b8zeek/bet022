@@ -19,6 +19,11 @@ export function Navigation() {
               <NavButton to='/predictions'>Bet</NavButton>
             </>
           )}
+          {user?.isAdmin && (
+            <>
+              <NavButton to='/add-games'>Add</NavButton>
+            </>
+          )}
         </Nav>
 
         <Logo />
