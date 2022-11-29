@@ -47,12 +47,13 @@ export function LoginPage() {
 
       if (headers['auth-token']) setPersonalAccessToken(headers['auth-token'])
 
-      const { userName, firstName, lastName } = resData
+      const { userName, firstName, lastName, isAdmin } = resData
 
       setUser({
         userName,
         firstName,
-        lastName
+        lastName,
+        isAdmin
       })
 
       if (resData) navigate('/')
