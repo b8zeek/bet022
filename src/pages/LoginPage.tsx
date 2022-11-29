@@ -15,7 +15,7 @@ import { PageLayout } from '../wrappers'
 import { Label, Input, RedirectContainer, Button } from '../components'
 
 const schema = object().shape({
-  userName: string().min(6).max(255).required(),
+  userName: string().min(3).max(32).required(),
   password: string().min(6).max(255).required()
 })
 
