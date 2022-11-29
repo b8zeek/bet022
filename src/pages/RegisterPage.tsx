@@ -3,6 +3,9 @@ import { useForm } from 'react-hook-form'
 import { object, string } from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 
+import { personalAccessTokenAtom } from '../store'
+import { useSetAtom } from 'jotai'
+
 import { useRegister } from '../hooks'
 
 import { PageLayout } from '../wrappers'
@@ -17,6 +20,7 @@ const schema = object().shape({
 })
 
 export function RegisterPage() {
+  const setPersonalAccessToken = useSetAtom(personalAccessTokenAtom)
   const { mutateAsync } = useRegister()
 
   const {
@@ -29,10 +33,20 @@ export function RegisterPage() {
   })
 
   const onSubmitHandler = async (data: any) => {
-    const res = await mutateAsync(data)
+    try {
+      const {
+        data: { data: resData },
+        headers
+      } = await mutateAsync(data)
 
-    console.log('RES', res)
-    reset()
+      if (headers['auth-token']) setPersonalAccessToken(headers['auth-token'])
+
+      console.log('RES', resData)
+
+      reset()
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
