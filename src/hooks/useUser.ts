@@ -6,9 +6,12 @@ export function useUser() {
     // TODO: REMOVE NEXT LINE LATER
     await new Promise(_ => setTimeout(_, 1000))
 
+    const getTokenFromLocalStorage = () =>
+      localStorage.getItem('auth-token') === null ? JSON.parse(localStorage.getItem('auth-token')!) : ''
+
     const { data } = await Axios.get('/user', {
       headers: {
-        'auth-token': JSON.parse(localStorage.getItem('auth-token') || '')
+        'auth-token': getTokenFromLocalStorage()
       }
     })
 
