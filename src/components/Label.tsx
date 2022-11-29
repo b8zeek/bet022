@@ -11,7 +11,9 @@ export function Label({ children }: LabelProps) {
 
 const StyledLabel = styled.label`
   min-width: 350px;
-  font-size: 16px;
+  font-size: 12px;
+  font-weight: 300;
+  color: #ffffffb0;
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 `
