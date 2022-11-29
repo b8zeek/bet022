@@ -7,8 +7,8 @@ import { showSpinnerAtom, userAtom } from './store'
 
 import { useUser } from './hooks'
 
-import { LoginPage, RegisterPage, StandingsPage, PredictionsPage } from './pages'
-import { ProtectedRoute, RedirectLoggedInUserRoute } from './wrappers'
+import { LoginPage, RegisterPage, StandingsPage, PredictionsPage, AddGamesPage } from './pages'
+import { ProtectedRoute, RedirectLoggedInUserRoute, AdminProtectedRoute } from './wrappers'
 import { Spinner } from './components'
 
 const router = createBrowserRouter([
@@ -42,6 +42,14 @@ const router = createBrowserRouter([
       <RedirectLoggedInUserRoute>
         <RegisterPage />
       </RedirectLoggedInUserRoute>
+    )
+  },
+  {
+    path: '/add-games',
+    element: (
+      <AdminProtectedRoute>
+        <AddGamesPage />
+      </AdminProtectedRoute>
     )
   },
   {
