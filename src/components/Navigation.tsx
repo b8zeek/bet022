@@ -1,16 +1,26 @@
 import styled from 'styled-components'
 
+import { useAtomValue } from 'jotai'
+import { userAtom } from '../store'
+
 import { Logo } from './Logo'
 import { NavButton } from './NavButton'
 
 export function Navigation() {
+  const user = useAtomValue(userAtom)
+
   return (
     <Container>
       <Content>
         <Nav>
-          <NavButton to='/'>Home</NavButton>
-          <NavButton to='/predictions'>Bet</NavButton>
+          {user && (
+            <>
+              <NavButton to='/'>Home</NavButton>
+              <NavButton to='/predictions'>Bet</NavButton>
+            </>
+          )}
         </Nav>
+
         <Logo />
       </Content>
     </Container>
