@@ -12,7 +12,7 @@ type RegisterContainerProps = {
 export function RedirectContainer({ paragraph, redirectLabel, redirectPath }: RegisterContainerProps) {
   return (
     <Container>
-      <Paragraph display='inline-block' textCenter marginRight='20px'>
+      <Paragraph display='inline-block' fontStyle='italic' textCenter marginRight='20px'>
         {paragraph}
       </Paragraph>
       <NavButton to={redirectPath}>{redirectLabel}</NavButton>

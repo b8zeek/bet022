@@ -31,8 +31,7 @@ export function RegisterPage() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
-    reset
+    formState: { errors }
   } = useForm({
     resolver: yupResolver(schema)
   })
