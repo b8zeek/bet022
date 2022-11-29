@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import { useForm } from 'react-hook-form'
 import { object, string } from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
+import { useNavigate } from 'react-router-dom'
 
 import { personalAccessTokenAtom, userAtom } from '../store'
 import { useSetAtom } from 'jotai'
@@ -22,6 +23,8 @@ const schema = object().shape({
 export function RegisterPage() {
   const setPersonalAccessToken = useSetAtom(personalAccessTokenAtom)
   const setUser = useSetAtom(userAtom)
+
+  const navigate = useNavigate()
 
   const { mutateAsync } = useRegister()
 
@@ -50,6 +53,8 @@ export function RegisterPage() {
         firstName,
         lastName
       })
+
+      if (resData) navigate('/')
     } catch (error) {
       console.log(error)
     }
