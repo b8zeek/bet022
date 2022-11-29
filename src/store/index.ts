@@ -10,3 +10,4 @@ type User = {
 }
 
 export const userAtom = atom<User | undefined>(undefined)
+export const showSpinnerAtom = atom<boolean>(false)
