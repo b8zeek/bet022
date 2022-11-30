@@ -15,6 +15,20 @@ type GameItemProps = {
 function GameItem({ register, index }: GameItemProps) {
   return (
     <ItemContainer>
+      <Label textAlign='left'>Home Team</Label>
+      <Input {...register(`games.${index}.homeTeam`)} marginBottom='10px' />
+      <Label textAlign='left'>Away Team</Label>
+      <Input {...register(`games.${index}.awayTeam`)} marginBottom='10px' />
+
+      <Label textAlign='left'>Time</Label>
+      <Input {...register(`games.${index}.date`)} marginBottom='10px' />
+    </ItemContainer>
+  )
+}
+
+function SpecialItem({ register, index }: GameItemProps) {
+  return (
+    <ItemContainer>
       <Label>Teams</Label>
       <Teams>
         <Input {...register(`games.${index}.homeTeam`)} marginBottom='5px' />
@@ -30,16 +44,30 @@ function GameItem({ register, index }: GameItemProps) {
 
 export function AddGamesPage() {
   const { control, register, handleSubmit } = useForm()
-  const { fields, append } = useFieldArray({
+
+  const { fields: games, append: appendGame } = useFieldArray({
     control,
     name: 'games'
   })
 
+  const { fields: specials, append: appendSpecial } = useFieldArray({
+    control,
+    name: 'specials'
+  })
+
   const addNewGame = () =>
-    append({
+    appendGame({
       homeTeam: '',
       awayTeam: '',
       date: ''
+    })
+
+  const addNewSpecial = () =>
+    appendSpecial({
+      description: '',
+      date: '',
+      availableTips: '',
+      award: 0
     })
 
   const onSubmitHandler = (data: any) => {
@@ -49,14 +77,19 @@ export function AddGamesPage() {
   return (
     <PageLayout heading='Add Games' subheading='Hmmm...'>
       <Form onSubmit={handleSubmit(onSubmitHandler)}>
-        {fields.map((field, index) => (
-          <GameItem key={field.id} register={register} index={index} />
+        {games.map((game, index) => (
+          <GameItem key={game.id} register={register} index={index} />
+        ))}
+        {specials.map((special, index) => (
+          <SpecialItem key={special.id} register={register} index={index} />
         ))}
         <Buttons>
           <Button type='button' onClick={addNewGame}>
             Add New Game
           </Button>
-          <Button type='button'>Add New Special</Button>
+          <Button type='button' onClick={addNewSpecial}>
+            Add New Special
+          </Button>
         </Buttons>
         <Button type='submit'>Submit</Button>
       </Form>
