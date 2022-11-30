@@ -3,6 +3,11 @@ import { PageLayout } from '../wrappers'
 import { useForm, useFieldArray } from 'react-hook-form'
 import { object, string } from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
+import { useNavigate } from 'react-router-dom'
+
+import { useAddEvents } from '../hooks'
+
+import { useUserInterface } from '../services'
 
 import { Label, Input, Button } from '../components'
 import { useState } from 'react'
@@ -58,8 +63,14 @@ export function AddGamesPage() {
     name: 'specials'
   })
 
+  const { showSpinner, hideSpinner } = useUserInterface()
+  const navigate = useNavigate()
+
+  const { mutateAsync } = useAddEvents()
+
   const addNewGame = () =>
     appendGame({
+      type: 'game',
       homeTeam: '',
       awayTeam: '',
       date: ''
@@ -67,14 +78,35 @@ export function AddGamesPage() {
 
   const addNewSpecial = () =>
     appendSpecial({
+      type: 'special',
       description: '',
       date: '',
       availableTips: '',
       award: 0
     })
 
-  const onSubmitHandler = (data: any) => {
-    console.log('DATA', data)
+  const onSubmitHandler = async (data: any) => {
+    showSpinner()
+
+    const parsedData = {
+      events: [
+        ...data.games,
+        ...data.specials.map((special: any) => ({
+          ...special,
+          availableTips: special.availableTips.split(' ')
+        }))
+      ]
+    }
+
+    try {
+      await mutateAsync(parsedData)
+
+      navigate('/')
+    } catch (error) {
+      console.log(error)
+    }
+
+    hideSpinner()
   }
 
   return (

@@ -39,6 +39,7 @@ export function LoginPage() {
 
   const onSubmitHandler = async (data: any) => {
     showSpinner()
+
     try {
       const {
         data: { data: resData },
