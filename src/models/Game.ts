@@ -1,7 +1,8 @@
 export type Game = {
   id: string
-  time: number
   homeTeam: string
   awayTeam: string
+  date: Date
+  availableTips: string[]
   tip?: number
 }
