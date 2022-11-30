@@ -1,5 +1,5 @@
 export * from './useStandings'
-export * from './useGames'
+export * from './useEvents'
 export * from './useRegister'
 export * from './useLogin'
 export * from './useUser'

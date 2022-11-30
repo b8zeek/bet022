@@ -10,7 +10,7 @@ function GameItem({ game }: { game: Game }) {
     <GameContainer>
       <GameData>
         <Text widthPercentage={30} italic>
-          {moment.unix(game.time).format('DD.MM. HHmm')}
+          {moment(game.date).format('DD.MM. HH:mm')}
         </Text>
         <Text widthPercentage={25} textAlign='right' marginRight='5%'>
           {game.homeTeam}
@@ -19,9 +19,9 @@ function GameItem({ game }: { game: Game }) {
       </GameData>
       <Select>
         <option hidden></option>
-        <option value='1'>1</option>
-        <option value='X'>X</option>
-        <option value='2'>2</option>
+        {game.availableTips.map(tip => (
+          <option value={tip}>{tip}</option>
+        ))}
       </Select>
     </GameContainer>
   )
