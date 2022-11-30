@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form'
 import { object, string } from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 
-import { Label, Input } from '../components'
+import { Label, Input, Button } from '../components'
 
 function GameItem() {
   return (
@@ -26,6 +26,11 @@ export function AddGamesPage() {
         <GameItem />
         <GameItem />
         <GameItem />
+        <Buttons>
+          <Button type='button'>Add New Game</Button>
+          <Button type='button'>Add New Special</Button>
+        </Buttons>
+        <Button type='submit'>Submit</Button>
       </Form>
     </PageLayout>
   )
@@ -41,9 +46,18 @@ const Form = styled.form`
 
 const ItemContainer = styled.div`
   width: 100%;
+  text-align: center;
   margin-bottom: 10px;
 `
 
 const Teams = styled.div`
   width: 100%;
+`
+
+const Buttons = styled.div`
+  width: 100%;
+  max-width: 350px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
 `
