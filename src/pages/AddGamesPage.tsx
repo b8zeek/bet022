@@ -17,6 +17,7 @@ function GameItem({ register, index }: GameItemProps) {
     <ItemContainer>
       <Label textAlign='left'>Home Team</Label>
       <Input {...register(`games.${index}.homeTeam`)} marginBottom='10px' />
+
       <Label textAlign='left'>Away Team</Label>
       <Input {...register(`games.${index}.awayTeam`)} marginBottom='10px' />
 
@@ -29,15 +30,17 @@ function GameItem({ register, index }: GameItemProps) {
 function SpecialItem({ register, index }: GameItemProps) {
   return (
     <ItemContainer>
-      <Label>Teams</Label>
-      <Teams>
-        <Input {...register(`games.${index}.homeTeam`)} marginBottom='5px' />
-        <Input {...register(`games.${index}.awayTeam`)} />
-      </Teams>
-      <Label>Time</Label>
-      <Teams>
-        <Input {...register(`games.${index}.date`)} />
-      </Teams>
+      <Label textAlign='left'>Description</Label>
+      <Input {...register(`specials.${index}.description`)} marginBottom='10px' />
+
+      <Label textAlign='left'>Time</Label>
+      <Input {...register(`specials.${index}.date`)} marginBottom='10px' />
+
+      <Label textAlign='left'>Available Tips (spread by space)</Label>
+      <Input {...register(`specials.${index}.availableTips`)} marginBottom='10px' />
+
+      <Label textAlign='left'>Award</Label>
+      <Input {...register(`specials.${index}.award`)} marginBottom='10px' />
     </ItemContainer>
   )
 }
