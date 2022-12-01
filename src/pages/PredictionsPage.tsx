@@ -5,18 +5,18 @@ import { Paragraph, Games } from '../components'
 import { useEvents } from '../hooks'
 
 export function PredictionsPage() {
-  const { data: games, isLoading, isError } = useEvents()
+  const { data: events, isLoading, isError } = useEvents()
 
-  console.log('EVENTS', games)
+  console.log('EVENTS', events)
 
   return (
-    <PageLayout heading='Your Predictions' subheading='Take your best shot!'>
-      {(() => {
-        if (isError) return <Paragraph textCenter>Error while fetching the data.</Paragraph>
-        if (!isLoading && !games?.length) return <Paragraph textCenter>No data.</Paragraph>
+    <PageLayout heading='Upcoming Events' subheading='Take your best shot!'>
+      {isError && <Paragraph textCenter>Error while fetching the data.</Paragraph>}
+      {isLoading && <Paragraph textCenter>Loading...</Paragraph>}
+      {!events?.length && <Paragraph textCenter>No data!</Paragraph>}
 
-        return <Games games={games} isLoading={isLoading} />
-      })()}
+      {JSON.stringify(events)}
+      {/* <Games games={events!.filter(event => event.type === 'game')} isLoading={isLoading} /> */}
     </PageLayout>
   )
 }
