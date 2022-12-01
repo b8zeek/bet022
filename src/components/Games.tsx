@@ -5,7 +5,7 @@ import { Game } from '../models'
 
 import { Text, PreloaderText, Paragraph, Button } from '../components'
 
-function GameItem({ game }: { game: Game }) {
+export function GameItem({ game }: { game: Game }) {
   return (
     <GameContainer>
       <GameData>
@@ -20,7 +20,9 @@ function GameItem({ game }: { game: Game }) {
       <Select>
         <option hidden></option>
         {game.availableTips.map(tip => (
-          <option value={tip}>{tip}</option>
+          <option key={tip} value={tip}>
+            {tip}
+          </option>
         ))}
       </Select>
     </GameContainer>
@@ -58,7 +60,7 @@ export function Games({ games, isLoading }: GamesProps) {
           ? Array(10)
               .fill('🍀')
               .map((_, index) => <PreloaderGameItem key={index} isLoading={isLoading} />)
-          : games.map(game => <GameItem key={game.id} game={game} />)}
+          : games.map(game => <GameItem key={game._id} game={game} />)}
         <Button onClick={event => event.preventDefault()}>Submit</Button>
       </Form>
     )
