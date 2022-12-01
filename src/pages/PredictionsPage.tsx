@@ -1,13 +1,43 @@
+import { useEffect } from 'react'
+import { useForm, useFieldArray } from 'react-hook-form'
+
 import { PageLayout } from '../wrappers'
 
-import { Paragraph, Games } from '../components'
+import { Paragraph, GameItem } from '../components'
+
+import { Event, Game, Special } from '../models'
 
 import { useEvents } from '../hooks'
 
 export function PredictionsPage() {
+  const { control, register, setValue, handleSubmit } = useForm<{
+    games: Game[]
+    specials: Special[]
+  }>()
+
+  const { fields: games, append: appendGame } = useFieldArray({
+    control,
+    name: 'games'
+  })
+
+  const { fields: specials, append: appendSpecial } = useFieldArray({
+    control,
+    name: 'specials'
+  })
+
   const { data: events, isLoading, isError } = useEvents()
 
-  console.log('EVENTS', events)
+  useEffect(() => {
+    if (events?.length) {
+      const games = events.filter((event: Event): event is Game => event.type === 'Game')
+      const specials = events.filter(event => event.type === 'Special') as Special[]
+
+      console.log('GAMES', games)
+
+      if (games.length) setValue('games', games)
+      if (specials.length) setValue('specials', specials)
+    }
+  }, [events])
 
   return (
     <PageLayout heading='Upcoming Events' subheading='Take your best shot!'>
@@ -15,8 +45,9 @@ export function PredictionsPage() {
       {isLoading && <Paragraph textCenter>Loading...</Paragraph>}
       {!events?.length && <Paragraph textCenter>No data!</Paragraph>}
 
-      {JSON.stringify(events)}
-      {/* <Games games={events!.filter(event => event.type === 'game')} isLoading={isLoading} /> */}
+      {games.map(game => (
+        <GameItem key={game._id} game={game} />
+      ))}
     </PageLayout>
   )
 }
