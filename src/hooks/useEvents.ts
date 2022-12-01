@@ -1,6 +1,8 @@
 import { useQuery } from 'react-query'
 import { Axios } from '../services'
 
+import { Event } from '../models'
+
 export function useEvents() {
   const getEvents = async () => {
     // TODO: REMOVE NEXT LINE LATER
@@ -11,5 +13,5 @@ export function useEvents() {
     return data?.events || []
   }
 
-  return useQuery(['events'], getEvents)
+  return useQuery<Event[], Error>(['events'], getEvents)
 }
