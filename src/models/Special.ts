@@ -1,7 +1,6 @@
-export type Special = {
-  type: 'game'
+import { Event } from './Event'
+
+export type Special = Event & {
+  type: 'Special'
   description: string
-  date: string
-  availableTips: string[]
-  award: number
 }

@@ -1,9 +1,7 @@
-export type Game = {
-  type: 'game'
-  id: string
+import { Event } from './Event'
+
+export type Game = Event & {
+  type: 'Game'
   homeTeam: string
   awayTeam: string
-  date: Date
-  availableTips: string[]
-  tip?: number
 }
