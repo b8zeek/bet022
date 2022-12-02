@@ -8,7 +8,7 @@ import { Paragraph, GameItem, SpecialItem, Button } from '../components'
 import { Event, Game, Special } from '../models'
 
 import { useUserInterface } from '../services'
-import { useEvents } from '../hooks'
+import { useEvents, useUpsertBets } from '../hooks'
 
 export function PredictionsPage() {
   const { control, register, setValue, handleSubmit } = useForm<{
@@ -29,6 +29,7 @@ export function PredictionsPage() {
   const { showSpinner, hideSpinner } = useUserInterface()
 
   const { data: events, isLoading, isError } = useEvents()
+  const { mutateAsync: upsertBets } = useUpsertBets()
 
   useEffect(() => {
     if (events?.length) {
@@ -45,8 +46,27 @@ export function PredictionsPage() {
 
     console.log('FORM DATA', data)
 
+    const parsedData = {
+      bets: [
+        ...data.games
+          .filter((game: Game) => game.outcome)
+          .map((game: Game) => ({
+            eventId: game._id,
+            outcome: game.outcome
+          })),
+        ...data.specials
+          .filter((special: Special) => special.outcome)
+          .map((special: Special) => ({
+            eventId: special._id,
+            outcome: special.outcome
+          }))
+      ]
+    }
+
+    console.log('PARSED', parsedData)
+
     try {
-      // await mutateAsync(parsedData)
+      await upsertBets(parsedData)
     } catch (error) {
       console.log(error)
     }
