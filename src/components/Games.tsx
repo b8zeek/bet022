@@ -24,7 +24,7 @@ export function GameItem({ game, index, register }: GameItemProps) {
         </Text>
         <Text widthPercentage={40}>{game.awayTeam}</Text>
       </EventData>
-      <Select {...register(`games.${index}.tip`)}>
+      <Select {...register(`games.${index}.outcome`)}>
         <option hidden></option>
         {game.availableTips.map(tip => (
           <option key={tip} value={tip}>

@@ -3,5 +3,5 @@ export type Event = {
   type: 'Game' | 'Special'
   date: Date
   availableTips: string[]
-  tip?: string
+  outcome?: string
 }
