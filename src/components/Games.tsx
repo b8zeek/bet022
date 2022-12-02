@@ -1,11 +1,18 @@
 import styled from 'styled-components'
 import moment from 'moment'
+import { UseFormRegister } from 'react-hook-form'
 
 import { Game, Special } from '../models'
 
 import { Text, PreloaderText, Paragraph, Button } from '../components'
 
-export function GameItem({ game }: { game: Game }) {
+type GameItemProps = {
+  game: Game
+  index: number
+  register: UseFormRegister<{ games: Game[]; specials: Special[] }>
+}
+
+export function GameItem({ game, index, register }: GameItemProps) {
   return (
     <GameContainer>
       <EventData>
@@ -17,7 +24,7 @@ export function GameItem({ game }: { game: Game }) {
         </Text>
         <Text widthPercentage={40}>{game.awayTeam}</Text>
       </EventData>
-      <Select>
+      <Select {...register(`games.${index}.tip`)}>
         <option hidden></option>
         {game.availableTips.map(tip => (
           <option key={tip} value={tip}>
@@ -73,20 +80,20 @@ type GamesProps = {
   isLoading: boolean
 }
 
-export function Games({ games, isLoading }: GamesProps) {
-  if (isLoading || games.length !== 0)
-    return (
-      <Form>
-        {isLoading
-          ? Array(10)
-              .fill('🍀')
-              .map((_, index) => <PreloaderGameItem key={index} isLoading={isLoading} />)
-          : games.map(game => <GameItem key={game._id} game={game} />)}
-        <Button onClick={event => event.preventDefault()}>Submit</Button>
-      </Form>
-    )
-  return <Paragraph textCenter>No data.</Paragraph>
-}
+// export function Games({ games, isLoading }: GamesProps) {
+//   if (isLoading || games.length !== 0)
+//     return (
+//       <Form>
+//         {isLoading
+//           ? Array(10)
+//               .fill('🍀')
+//               .map((_, index) => <PreloaderGameItem key={index} isLoading={isLoading} />)
+//           : games.map(game => <GameItem key={game._id} game={game} />)}
+//         <Button onClick={event => event.preventDefault()}>Submit</Button>
+//       </Form>
+//     )
+//   return <Paragraph textCenter>No data.</Paragraph>
+// }
 
 const Form = styled.form`
   text-align: center;
