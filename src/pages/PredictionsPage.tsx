@@ -1,9 +1,10 @@
 import { useEffect } from 'react'
+import styled from 'styled-components'
 import { useForm, useFieldArray } from 'react-hook-form'
 
 import { PageLayout } from '../wrappers'
 
-import { Paragraph, GameItem } from '../components'
+import { Paragraph, GameItem, SpecialItem } from '../components'
 
 import { Event, Game, Special } from '../models'
 
@@ -32,8 +33,6 @@ export function PredictionsPage() {
       const games = events.filter((event: Event): event is Game => event.type === 'Game')
       const specials = events.filter(event => event.type === 'Special') as Special[]
 
-      console.log('GAMES', games)
-
       if (games.length) setValue('games', games)
       if (specials.length) setValue('specials', specials)
     }
@@ -45,9 +44,16 @@ export function PredictionsPage() {
       {isLoading && <Paragraph textCenter>Loading...</Paragraph>}
       {!events?.length && <Paragraph textCenter>No data!</Paragraph>}
 
-      {games.map(game => (
-        <GameItem key={game._id} game={game} />
-      ))}
+      <Form>
+        {games.map(game => (
+          <GameItem key={game._id} game={game} />
+        ))}
+        {specials.map(special => (
+          <SpecialItem key={special._id} special={special} />
+        ))}
+      </Form>
     </PageLayout>
   )
 }
+
+const Form = styled.form``
