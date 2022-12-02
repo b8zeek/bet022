@@ -1,14 +1,14 @@
 import styled from 'styled-components'
 import moment from 'moment'
 
-import { Game } from '../models'
+import { Game, Special } from '../models'
 
 import { Text, PreloaderText, Paragraph, Button } from '../components'
 
 export function GameItem({ game }: { game: Game }) {
   return (
     <GameContainer>
-      <GameData>
+      <EventData>
         <Text widthPercentage={30} italic>
           {moment(game.date).format('DD.MM. HH:mm')}
         </Text>
@@ -16,7 +16,7 @@ export function GameItem({ game }: { game: Game }) {
           {game.homeTeam}
         </Text>
         <Text widthPercentage={40}>{game.awayTeam}</Text>
-      </GameData>
+      </EventData>
       <Select>
         <option hidden></option>
         {game.availableTips.map(tip => (
@@ -29,14 +29,35 @@ export function GameItem({ game }: { game: Game }) {
   )
 }
 
+export function SpecialItem({ special }: { special: Special }) {
+  return (
+    <GameContainer>
+      <EventData>
+        <Text widthPercentage={30} italic>
+          {moment(special.date).format('DD.MM. HH:mm')}
+        </Text>
+        <Text widthPercentage={70}>{special.description}</Text>
+      </EventData>
+      <Select>
+        <option hidden></option>
+        {special.availableTips.map(tip => (
+          <option key={tip} value={tip}>
+            {tip}
+          </option>
+        ))}
+      </Select>
+    </GameContainer>
+  )
+}
+
 function PreloaderGameItem({ isLoading }: { isLoading: boolean }) {
   return (
     <GameContainer>
-      <GameData>
+      <EventData>
         <PreloaderText widthPercentage={20} marginRight={15} />
         <PreloaderText widthPercentage={20} marginRight={5} />
         <PreloaderText widthPercentage={20} />
-      </GameData>
+      </EventData>
       <Select disabled={isLoading}>
         <option hidden></option>
         <option value='1'>1</option>
@@ -80,7 +101,7 @@ const GameContainer = styled.div`
   }
 `
 
-const GameData = styled.div`
+const EventData = styled.div`
   height: 33px;
   width: 80%;
   display: inline-block;
