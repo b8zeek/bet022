@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { PageLayout } from '../wrappers'
-import { useForm, useFieldArray } from 'react-hook-form'
+import { useForm, useFieldArray, UseFormRegister, FieldValues } from 'react-hook-form'
 import { object, string } from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigate } from 'react-router-dom'
@@ -13,7 +13,7 @@ import { Label, Input, Button } from '../components'
 import { useState } from 'react'
 
 type GameItemProps = {
-  register: any
+  register: UseFormRegister<FieldValues>
   index: number
 }
 

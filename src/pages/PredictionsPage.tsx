@@ -61,8 +61,8 @@ export function PredictionsPage() {
       {!events?.length && <Paragraph textCenter>No data!</Paragraph>}
 
       <Form onSubmit={handleSubmit(onSubmitHandler)}>
-        {games.map(game => (
-          <GameItem key={game._id} game={game} />
+        {games.map((game, index) => (
+          <GameItem key={game._id} game={game} index={index} register={register} />
         ))}
         {specials.map(special => (
           <SpecialItem key={special._id} special={special} />
