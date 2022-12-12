@@ -1,0 +1,45 @@
+@import url('./assets/styles/alliance-no2.css');
+
+:root {
+  font-family: AllianceNo2, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans,
+    Droid Sans, Helvetica Neue, sans-serif;
+
+  color-scheme: light dark;
+  background-color: #0c1017;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100vh;
+  font-family: AllianceNo2, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans,
+    Droid Sans, Helvetica Neue, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    background-color: #0c1017;
+  }
+  a:hover {
+    color: #747bff;
+  }
+}

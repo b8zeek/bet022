@@ -1,0 +1,5 @@
+export * from './StandingsPage'
+export * from './PredictionsPage'
+export * from './RegisterPage'
+export * from './LoginPage'
+export * from './AddGamesPage'
