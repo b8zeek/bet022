@@ -66,7 +66,7 @@ export function LoginPage() {
   }
 
   return (
-    <PageLayout heading='Welcome Back Traveler' subheading='Thank you for your money poor lost soul'>
+    <PageLayout heading='Welcome' subheading='Feeling lucky today?'>
       <RedirectContainer paragraph="Don't have an accout?" redirectLabel='Register' redirectPath='/register' />
       <Form onSubmit={handleSubmit(onSubmitHandler)}>
         <Label>Username</Label>
