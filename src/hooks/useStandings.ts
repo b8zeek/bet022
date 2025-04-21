@@ -6,7 +6,7 @@ export function useStandings() {
     // TODO: REMOVE NEXT LINE LATER
     await new Promise(_ => setTimeout(_, 2000))
 
-    const { data } = await axios.get(`${import.meta.env.VITE_URL}/standings`)
+    const { data } = await axios.get(`${import.meta.env.VITE_URL}/user/standings`)
 
     return data?.standings || []
   }
