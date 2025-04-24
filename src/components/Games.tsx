@@ -16,13 +16,11 @@ export function GameItem({ game, index, register }: GameItemProps) {
   return (
     <GameContainer>
       <EventData>
-        <Text widthPercentage={30} italic>
+        <Text widthPercentage={100} italic>
           {moment(game.date).format('DD.MM. HH:mm')}
         </Text>
-        <Text widthPercentage={25} textAlign='right' marginRight='5%'>
-          {game.homeTeam}
-        </Text>
-        <Text widthPercentage={40}>{game.awayTeam}</Text>
+        <Text widthPercentage={100}>{game.homeTeam}</Text>
+        <Text widthPercentage={100}>{game.awayTeam}</Text>
       </EventData>
       <Select {...register(`games.${index}.outcome`)}>
         <option hidden></option>
@@ -100,7 +98,6 @@ const Form = styled.form`
 `
 
 const GameContainer = styled.div`
-  height: 33px;
   margin-bottom: 10px;
 
   &:last-of-type {
@@ -109,7 +106,6 @@ const GameContainer = styled.div`
 `
 
 const EventData = styled.div`
-  height: 33px;
   width: 80%;
   display: inline-block;
   vertical-align: top;
@@ -122,7 +118,7 @@ const EventData = styled.div`
 
 const Select = styled.select`
   width: 20%;
-  height: 33px;
+  height: 75px;
   line-height: 33px;
   border-radius: 0 6px 6px 0;
   border: 1px solid #30363d;
