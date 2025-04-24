@@ -44,8 +44,6 @@ export function PredictionsPage() {
   const onSubmitHandler = async (data: any) => {
     showSpinner()
 
-    console.log('FORM DATA', data)
-
     const parsedData = {
       bets: [
         ...data.games
@@ -62,8 +60,6 @@ export function PredictionsPage() {
           }))
       ]
     }
-
-    console.log('PARSED', parsedData)
 
     try {
       await upsertBets(parsedData)
