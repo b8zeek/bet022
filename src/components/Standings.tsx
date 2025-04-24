@@ -9,14 +9,15 @@ type ItemProps = {
 }
 
 function Item({ participant }: ItemProps) {
-  const { favorite, name, score } = participant
+  const { firstName, lastName, correctBets } = participant
 
   return (
     <Row>
-      <Text widthPercentage={10}>{favorite}</Text>
-      <Text widthPercentage={70}>{name}</Text>
+      <Text widthPercentage={80}>
+        {firstName} {lastName}
+      </Text>
       <Text widthPercentage={20} textAlign='right'>
-        {score}
+        {correctBets}
       </Text>
     </Row>
   )
@@ -40,13 +41,13 @@ type TableProps = {
 export function Standings({ isLoading, participants }: TableProps) {
   return (
     <Container>
-      <Header>World Cup Qatar 2022</Header>
+      <Header>NBA 2025</Header>
       <Body>
         {isLoading
           ? Array(10)
               .fill('🍀')
               .map((_, index) => <PreloaderItem key={index} />)
-          : participants.map(participant => <Item key={participant.name} participant={participant} />)}
+          : participants.map(participant => <Item key={participant._id} participant={participant} />)}
       </Body>
     </Container>
   )
